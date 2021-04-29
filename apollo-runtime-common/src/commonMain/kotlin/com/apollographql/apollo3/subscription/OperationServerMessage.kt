@@ -21,7 +21,7 @@ sealed class OperationServerMessage {
 
   data class Data(val id: String?, val payload: Map<String, Any?>) : OperationServerMessage() {
     companion object {
-      const val TYPE = "data"
+      const val TYPE = "next"
     }
   }
 

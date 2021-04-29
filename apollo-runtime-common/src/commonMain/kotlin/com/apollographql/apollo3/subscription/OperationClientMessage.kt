@@ -21,13 +21,13 @@ sealed class OperationClientMessage {
       val sendSubscriptionDocument: Boolean
   ) : OperationClientMessage() {
     companion object {
-      internal const val TYPE = "start"
+      internal const val TYPE = "subscribe"
     }
   }
 
   class Stop(val subscriptionId: String) : OperationClientMessage() {
     companion object {
-      internal const val TYPE = "stop"
+      internal const val TYPE = "complete"
     }
   }
 

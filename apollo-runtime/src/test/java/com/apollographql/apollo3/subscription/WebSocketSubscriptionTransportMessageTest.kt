@@ -45,7 +45,7 @@ class WebSocketSubscriptionTransportMessageTest {
             autoPersistSubscription = false,
             sendSubscriptionDocument = false)
     )
-    val expected = """{"id":"subscriptionId","type":"start","payload":{"variables":{},"operationName":"SomeSubscription","query":"subscription{commentAdded{id  name}"}}"""
+    val expected = """{"id":"subscriptionId","type":"subscribe","payload":{"variables":{},"operationName":"SomeSubscription","query":"subscription{commentAdded{id  name}"}}"""
     assertThat(webSocketFactory.webSocket.lastSentMessage).isEqualTo(expected)
   }
 
@@ -53,7 +53,7 @@ class WebSocketSubscriptionTransportMessageTest {
   fun startSubscriptionAutoPersistSubscriptionEnabledSendDocumentEnabled() {
     subscriptionTransport.send(OperationClientMessage.Start("subscriptionId", MockSubscription(),
         ResponseAdapterCache.DEFAULT, autoPersistSubscription = true, sendSubscriptionDocument = true))
-    val expected = """{"id":"subscriptionId","type":"start","payload":{"variables":{},"operationName":"SomeSubscription","query":"subscription{commentAdded{id  name}","extensions":{"persistedQuery":{"version":1,"sha256Hash":"someId"}}}}"""
+    val expected = """{"id":"subscriptionId","type":"subscribe","payload":{"variables":{},"operationName":"SomeSubscription","query":"subscription{commentAdded{id  name}","extensions":{"persistedQuery":{"version":1,"sha256Hash":"someId"}}}}"""
     assertThat(webSocketFactory.webSocket.lastSentMessage).isEqualTo(expected)
   }
 
@@ -61,14 +61,14 @@ class WebSocketSubscriptionTransportMessageTest {
   fun startSubscriptionAutoPersistSubscriptionEnabledSendDocumentDisabled() {
     subscriptionTransport.send(OperationClientMessage.Start("subscriptionId", MockSubscription(),
         ResponseAdapterCache.DEFAULT, autoPersistSubscription = true, sendSubscriptionDocument = false))
-    val expected = """{"id":"subscriptionId","type":"start","payload":{"variables":{},"operationName":"SomeSubscription","extensions":{"persistedQuery":{"version":1,"sha256Hash":"someId"}}}}"""
+    val expected = """{"id":"subscriptionId","type":"subscribe","payload":{"variables":{},"operationName":"SomeSubscription","extensions":{"persistedQuery":{"version":1,"sha256Hash":"someId"}}}}"""
     assertThat(webSocketFactory.webSocket.lastSentMessage).isEqualTo(expected)
   }
 
   @Test
   fun stopSubscription() {
     subscriptionTransport.send(OperationClientMessage.Stop("subscriptionId"))
-    assertThat(webSocketFactory.webSocket.lastSentMessage).isEqualTo("""{"id":"subscriptionId","type":"stop"}""")
+    assertThat(webSocketFactory.webSocket.lastSentMessage).isEqualTo("""{"id":"subscriptionId","type":"complete"}""")
   }
 
   @Test
