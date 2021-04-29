@@ -72,9 +72,9 @@ fun KotlinMultiplatformExtension.addTestDependencies(withJs: Boolean) {
       }
     }
   }
-  sourceSets.getByName("jvmTest") {
-    it.dependencies {
-      implementation(kotlin("test-junit"))
-    }
-  }
+//  sourceSets.getByName("jvmTest") {
+//    it.dependencies {
+//      implementation(kotlin("test-junit"))
+//    }
+//  }
 }

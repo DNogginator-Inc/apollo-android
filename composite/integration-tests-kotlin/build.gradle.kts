@@ -28,11 +28,11 @@ kotlin {
         implementation(groovy.util.Eval.x(project, "x.dep.kotlin.coroutines"))
       }
     }
-    val jvmTest by getting {
-      dependencies {
-        implementation(groovy.util.Eval.x(project, "x.dep.okHttp.mockWebServer"))
-      }
-    }
+//    val jvmTest by getting {
+//      dependencies {
+//        implementation(groovy.util.Eval.x(project, "x.dep.okHttp.mockWebServer"))
+//      }
+//    }
   }
 }
 
