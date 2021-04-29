@@ -51,7 +51,7 @@ class ApolloOperationMessageSerializerTest {
     )
     assertEquals(parseJson(serializer.writeClientMessage(regularQuery)), mapOf(
         "id" to regularQuery.subscriptionId,
-        "type" to "start",
+        "type" to "subscribe",
         "payload" to mapOf(
             "variables" to subscription.variables(ResponseAdapterCache.DEFAULT).valueMap,
             "operationName" to subscription.name(),
@@ -60,7 +60,7 @@ class ApolloOperationMessageSerializerTest {
     ))
     assertEquals(parseJson(serializer.writeClientMessage(persistedQueryWithoutDocument)), mapOf(
         "id" to persistedQueryWithoutDocument.subscriptionId,
-        "type" to "start",
+        "type" to "subscribe",
         "payload" to mapOf(
             "variables" to subscription.variables(ResponseAdapterCache.DEFAULT).valueMap,
             "operationName" to subscription.name(),
@@ -74,7 +74,7 @@ class ApolloOperationMessageSerializerTest {
     ))
     assertEquals(parseJson(serializer.writeClientMessage(persistedQueryWithDocument)), mapOf(
         "id" to persistedQueryWithDocument.subscriptionId,
-        "type" to "start",
+        "type" to "subscribe",
         "payload" to mapOf(
             "variables" to subscription.variables(ResponseAdapterCache.DEFAULT).valueMap,
             "operationName" to subscription.name(),
@@ -94,7 +94,7 @@ class ApolloOperationMessageSerializerTest {
     val message = OperationClientMessage.Stop("subscription-id")
     assertEquals(parseJson(serializer.writeClientMessage(message)),
         mapOf(
-            "type" to "stop",
+            "type" to "complete",
             "id" to "subscription-id"
         ))
   }
@@ -119,7 +119,7 @@ class ApolloOperationMessageSerializerTest {
   @Test
   fun readServerMessage_data() {
     assertEquals(
-        serializer.readServerMessage("""{"type":"data","id":"some-id","payload":{"key":"value"}}"""),
+        serializer.readServerMessage("""{"type":"next","id":"some-id","payload":{"key":"value"}}"""),
         OperationServerMessage.Data(
             id = "some-id",
             payload = mapOf("key" to "value")

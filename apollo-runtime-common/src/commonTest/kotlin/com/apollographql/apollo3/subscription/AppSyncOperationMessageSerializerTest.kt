@@ -14,7 +14,7 @@ class AppSyncOperationMessageSerializerTest {
       "x-api-key" to "da2-12345678901234567890123456"
   )
   private val serializer = AppSyncOperationMessageSerializer(authorization)
-/*
+
   @Test
   fun writeClientMessage_init() {
     val message = OperationClientMessage.Init(mapOf(
@@ -45,7 +45,7 @@ class AppSyncOperationMessageSerializerTest {
     ApolloOperationMessageSerializer.JSON_KEY_QUERY
     assertEquals(parseJson(serializer.writeClientMessage(message)), mapOf(
         "id" to message.subscriptionId,
-        "type" to "start",
+        "type" to "subscribe",
         "payload" to mapOf(
             "data" to """{"variables":{"variable":"value"},"operationName":"SomeSubscription","query":"subscription{commentAdded{id  name}"}""",
             "extensions" to mapOf(
@@ -78,7 +78,7 @@ class AppSyncOperationMessageSerializerTest {
   @Test
   fun readServerMessage_data() {
     assertEquals(
-        serializer.readServerMessage("""{"type":"data","id":"some-id","payload":{"key":"value"}}"""),
+        serializer.readServerMessage("""{"type":"next","id":"some-id","payload":{"key":"value"}}"""),
         OperationServerMessage.Data(
             id = "some-id",
             payload = mapOf("key" to "value")
@@ -128,7 +128,7 @@ class AppSyncOperationMessageSerializerTest {
         OperationServerMessage.Unsupported("""{"type":"unknown"}""")
     )
   }
-*/
+
   private fun OperationMessageSerializer.writeClientMessage(message: OperationClientMessage): String =
       Buffer()
           .also { writeClientMessage(message, it) }
