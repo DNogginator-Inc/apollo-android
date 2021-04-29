@@ -10,7 +10,7 @@ fun Project.configureMppDefaults(withJs: Boolean = true) {
     /**
      * configure targets
      */
-  //  jvm()
+    jvm()
 
     if (withJs) {
       js {
