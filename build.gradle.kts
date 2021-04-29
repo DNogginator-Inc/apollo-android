@@ -158,7 +158,7 @@ tasks.register("quickCheck") {
           this@register.dependsOn(this)
         }
       } else {
-        if (this.name == "test" /* || this.name == "jvmTest"*/) {
+        if (this.name == "test" || this.name == "jvmTest") {
           this@register.dependsOn(this)
         }
       }

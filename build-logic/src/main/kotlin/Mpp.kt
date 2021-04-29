@@ -10,7 +10,7 @@ fun Project.configureMppDefaults(withJs: Boolean = true) {
     /**
      * configure targets
      */
-    jvm()
+  //  jvm()
 
     if (withJs) {
       js {
@@ -59,22 +59,22 @@ fun Project.configureMppDefaults(withJs: Boolean = true) {
 }
 
 fun KotlinMultiplatformExtension.addTestDependencies(withJs: Boolean) {
-//  sourceSets.getByName("commonTest") {
-//    it.dependencies {
-//      implementation(kotlin("test-common"))
-//      implementation(kotlin("test-annotations-common"))
-//    }
-//  }
-//  if (withJs) {
-//    sourceSets.getByName("jsTest") {
-//      it.dependencies {
-//        implementation(kotlin("test-js"))
-//      }
-//    }
-//  }
-//  sourceSets.getByName("jvmTest") {
-//    it.dependencies {
-//      implementation(kotlin("test-junit"))
-//    }
-//  }
+  sourceSets.getByName("commonTest") {
+    it.dependencies {
+      implementation(kotlin("test-common"))
+      implementation(kotlin("test-annotations-common"))
+    }
+  }
+  if (withJs) {
+    sourceSets.getByName("jsTest") {
+      it.dependencies {
+        implementation(kotlin("test-js"))
+      }
+    }
+  }
+  sourceSets.getByName("jvmTest") {
+    it.dependencies {
+      implementation(kotlin("test-junit"))
+    }
+  }
 }

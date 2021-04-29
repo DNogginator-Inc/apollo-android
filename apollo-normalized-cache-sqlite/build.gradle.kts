@@ -39,11 +39,11 @@ configure<org.jetbrains.kotlin.gradle.dsl.KotlinMultiplatformExtension> {
       }
     }
 
-//    val jvmTest by getting {
-//      dependencies {
-//        implementation(groovy.util.Eval.x(project, "x.dep.truth"))
-//      }
-//    }
+    val jvmTest by getting {
+      dependencies {
+        implementation(groovy.util.Eval.x(project, "x.dep.truth"))
+      }
+    }
 
     val androidMain by getting {
       dependsOn(commonMain)
@@ -56,7 +56,7 @@ configure<org.jetbrains.kotlin.gradle.dsl.KotlinMultiplatformExtension> {
     val androidTest by getting {
       // this allows the android unit test to use the JVM driver
       // TODO: makes this better with HMPP?
-//      dependsOn(jvmTest)
+      dependsOn(jvmTest)
       dependencies {
         implementation(kotlin("test-junit"))
       }

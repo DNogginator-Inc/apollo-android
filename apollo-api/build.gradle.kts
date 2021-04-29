@@ -19,12 +19,12 @@ kotlin {
       }
     }
 
-//    val jvmTest by getting {
-//      dependencies {
-//        implementation(groovy.util.Eval.x(project, "x.dep.truth"))
-//        implementation(groovy.util.Eval.x(project, "x.dep.okHttp.okHttp"))
-//      }
-//    }
+    val jvmTest by getting {
+      dependencies {
+        implementation(groovy.util.Eval.x(project, "x.dep.truth"))
+        implementation(groovy.util.Eval.x(project, "x.dep.okHttp.okHttp"))
+      }
+    }
   }
 }
 

@@ -16,23 +16,23 @@ kotlin {
 
     addTestDependencies(false)
 
-//    val commonTest by getting {
-//      dependencies {
-//        implementation("com.apollographql.apollo3:apollo-api")
-//        implementation("com.apollographql.apollo3:apollo-runtime-kotlin")
-//        implementation("com.apollographql.apollo3:apollo-normalized-cache")
-//        implementation("com.apollographql.apollo3:apollo-cache-interceptor")
-//        implementation("com.apollographql.apollo3:apollo-testing-support")
-//
-//        implementation(groovy.util.Eval.x(project, "x.dep.kotlinxdatetime"))
-//        implementation(groovy.util.Eval.x(project, "x.dep.kotlin.coroutines"))
-//      }
-//    }
-//    val jvmTest by getting {
-//      dependencies {
-//        implementation(groovy.util.Eval.x(project, "x.dep.okHttp.mockWebServer"))
-//      }
-//    }
+    val commonTest by getting {
+      dependencies {
+        implementation("com.apollographql.apollo3:apollo-api")
+        implementation("com.apollographql.apollo3:apollo-runtime-kotlin")
+        implementation("com.apollographql.apollo3:apollo-normalized-cache")
+        implementation("com.apollographql.apollo3:apollo-cache-interceptor")
+        implementation("com.apollographql.apollo3:apollo-testing-support")
+
+        implementation(groovy.util.Eval.x(project, "x.dep.kotlinxdatetime"))
+        implementation(groovy.util.Eval.x(project, "x.dep.kotlin.coroutines"))
+      }
+    }
+    val jvmTest by getting {
+      dependencies {
+        implementation(groovy.util.Eval.x(project, "x.dep.okHttp.mockWebServer"))
+      }
+    }
   }
 }
 

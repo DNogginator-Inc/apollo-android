@@ -28,19 +28,19 @@ kotlin {
       }
     }
 
-//    val commonTest by getting {
-//      dependencies {
-//        implementation(project(":apollo-testing-support"))
-//      }
-//    }
+    val commonTest by getting {
+      dependencies {
+        implementation(project(":apollo-testing-support"))
+      }
+    }
 
-//    val jvmTest by getting {
-//      dependencies {
-//        implementation(kotlin("test-junit"))
-//        implementation(groovy.util.Eval.x(project, "x.dep.truth"))
-//        implementation(groovy.util.Eval.x(project, "x.dep.okHttp.okHttp"))
-//      }
-//    }
+    val jvmTest by getting {
+      dependencies {
+        implementation(kotlin("test-junit"))
+        implementation(groovy.util.Eval.x(project, "x.dep.truth"))
+        implementation(groovy.util.Eval.x(project, "x.dep.okHttp.okHttp"))
+      }
+    }
   }
 }
 

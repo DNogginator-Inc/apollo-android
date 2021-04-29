@@ -20,10 +20,10 @@ kotlin {
       }
     }
 
-//    val commonTest by getting {
-//      dependencies {
-//        implementation(project(":apollo-testing-support"))
-//      }
-//    }
+    val commonTest by getting {
+      dependencies {
+        implementation(project(":apollo-testing-support"))
+      }
+    }
   }
 }

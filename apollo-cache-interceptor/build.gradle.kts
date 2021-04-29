@@ -15,17 +15,17 @@ kotlin {
       }
     }
 
-//    val commonTest by getting {
-//      dependencies {
-//        implementation(project(":apollo-testing-support"))
-//      }
-//    }
+    val commonTest by getting {
+      dependencies {
+        implementation(project(":apollo-testing-support"))
+      }
+    }
 
-//    val jvmTest by getting {
-//      dependencies {
-//        implementation(groovy.util.Eval.x(project, "x.dep.truth"))
-//      }
-//    }
+    val jvmTest by getting {
+      dependencies {
+        implementation(groovy.util.Eval.x(project, "x.dep.truth"))
+      }
+    }
   }
 }
 
