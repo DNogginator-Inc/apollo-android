@@ -65,13 +65,13 @@ fun KotlinMultiplatformExtension.addTestDependencies(withJs: Boolean) {
 //      implementation(kotlin("test-annotations-common"))
 //    }
 //  }
-  if (withJs) {
-    sourceSets.getByName("jsTest") {
-      it.dependencies {
-        implementation(kotlin("test-js"))
-      }
-    }
-  }
+//  if (withJs) {
+//    sourceSets.getByName("jsTest") {
+//      it.dependencies {
+//        implementation(kotlin("test-js"))
+//      }
+//    }
+//  }
 //  sourceSets.getByName("jvmTest") {
 //    it.dependencies {
 //      implementation(kotlin("test-junit"))
