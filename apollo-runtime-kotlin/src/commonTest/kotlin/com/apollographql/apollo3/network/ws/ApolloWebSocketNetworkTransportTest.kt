@@ -30,7 +30,7 @@ import kotlin.test.assertTrue
 @ExperimentalCoroutinesApi
 @InternalCoroutinesApi
 class ApolloWebSocketNetworkTransportTest {
-
+/*
   @Test
   fun `when multiple responses, assert all delivered and completed`() {
     runBlocking {
@@ -67,7 +67,7 @@ class ApolloWebSocketNetworkTransportTest {
       }
     }
   }
-
+ */
   @Test
   fun `when connection ack timeout, assert completed with exception`() {
     runBlocking {
@@ -93,6 +93,7 @@ class ApolloWebSocketNetworkTransportTest {
       assertTrue(result.exceptionOrNull() is ApolloWebSocketException)
     }
   }
+/*
 
   @Test
   fun `when subscription error, assert completed with exception and payload`() {
@@ -194,6 +195,7 @@ class ApolloWebSocketNetworkTransportTest {
       webSocketConnection.isClosed.await()
     }
   }
+ */
 }
 
 private class FrozenWebSocketConnection(
