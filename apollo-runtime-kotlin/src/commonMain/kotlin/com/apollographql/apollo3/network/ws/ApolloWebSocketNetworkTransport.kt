@@ -81,7 +81,7 @@ class ApolloWebSocketNetworkTransport(
             serverConnection.send(
                 OperationClientMessage.Start(
                     subscriptionId = request.requestUuid.toString(),
-                    subscription = request.operation as Subscription<*>,
+                    subscription = request.operation as Operation<*>,
                     responseAdapterCache = responseAdapterCache,
                     autoPersistSubscription = false,
                     sendSubscriptionDocument = true

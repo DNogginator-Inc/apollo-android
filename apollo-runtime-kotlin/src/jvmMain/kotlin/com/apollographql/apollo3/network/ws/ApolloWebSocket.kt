@@ -98,7 +98,7 @@ private class WebSocketConnectionImpl(
 
   override fun send(data: ByteString) {
     if (!messageChannel.isClosedForReceive) {
-      webSocket.send(data)
+      webSocket.send(String(data.toByteArray()))
     }
   }
 

@@ -1,5 +1,6 @@
 package com.apollographql.apollo3.subscription
 
+import com.apollographql.apollo3.api.Operation
 import com.apollographql.apollo3.api.ResponseAdapterCache
 import com.apollographql.apollo3.api.Subscription
 
@@ -12,7 +13,7 @@ sealed class OperationClientMessage {
 
   class Start(
       val subscriptionId: String,
-      val subscription: Subscription<*>,
+      val subscription: Operation<*>,
       val responseAdapterCache: ResponseAdapterCache,
       val autoPersistSubscription: Boolean,
       /**
