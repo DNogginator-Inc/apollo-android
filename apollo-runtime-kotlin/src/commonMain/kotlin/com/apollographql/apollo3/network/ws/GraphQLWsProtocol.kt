@@ -13,6 +13,7 @@ import okio.Buffer
  * It can carry queries in addition to subscriptions over the websocket
  */
 class GraphQLWsProtocol(
+    private val connectionPayload: Map<String, Any?>? = null,
     override val frameType: WsFrameType = WsFrameType.Binary
 ) : WsProtocol {
   override val name: String
@@ -22,6 +23,9 @@ class GraphQLWsProtocol(
     val map = mutableMapOf<String, Any?>(
         "type" to "connection_init",
     )
+    if (connectionPayload != null) {
+      map.put("payload", connectionPayload)
+    }
     return map
   }
 
