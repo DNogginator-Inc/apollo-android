@@ -87,10 +87,6 @@ fun <D: Mutation.Data> ApolloRequest<D>.withOptimisticUpdates(data: D): ApolloRe
   val context = executionContext[CacheInput] ?: DefaultCacheInput(operation)
   return withExecutionContext(context.copy(optimisticData = data))
 }
-fun <D: Query.Data> ApolloRequest<D>.withWriteToCacheAsynchronously(writeToCacheAsynchronously: Boolean): ApolloRequest<D> {
-  val context = executionContext[CacheInput] ?: DefaultCacheInput(operation)
-  return withExecutionContext(context.copy(writeToCacheAsynchronously = writeToCacheAsynchronously))
-}
 
 fun <D: Operation.Data> ApolloRequest<D>.withCacheContext(
     fetchPolicy: FetchPolicy,
